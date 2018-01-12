@@ -1,0 +1,29 @@
+language: cpp
+
+compiler:
+  - gcc
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - oracle-java8-set-default
+      - protobuf-compiler
+      - libprotobuf-dev
+      - libatlas-dev
+      - gcc-4.8
+      - g++-4.8
+      - python-numpy
+      - python3-numpy
+      - python3-setuptools
+
+install:
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+
+script:
+  - ./travis.sh
+
+branches:
+  only:
+    - master
